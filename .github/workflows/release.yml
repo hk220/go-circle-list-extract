@@ -22,7 +22,7 @@ jobs:
       - name: Build for Windows
         run: go build -o ./go-circle-list-extract_win-amd64.exe .
         env:
-          GOOS: linux
+          GOOS: windows
           GOARCH: amd64
       - name: Build for darwin
         run: go build -o ./go-circle-list-extract_darwin-amd64 .
@@ -30,3 +30,9 @@ jobs:
           GOOS: darwin
           GOARCH: amd64
       - run: ls -alt
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: 'go-circle-list-extract*'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
