@@ -2,7 +2,11 @@
 
 go-circle-list-extract extracts a circle list of Comitia in JSON or CSV format.
 
-## Install
+## Install from binary
+
+Donwload from [release page](https://github.com/hk220/go-circle-list-extract/releases.)
+
+## Install from source
 
 ```bash
 go install github.com/hk220/go-circle-list-extract
