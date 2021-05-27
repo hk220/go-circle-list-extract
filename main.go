@@ -11,6 +11,7 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"github.com/gocarina/gocsv"
 	"github.com/spf13/afero"
+	"github.com/spf13/cobra"
 	"golang.org/x/text/unicode/norm"
 )
 
@@ -116,7 +117,9 @@ func (p *Printer) JSON() error {
 	return nil
 }
 
-func main() {
+func rootRun(cmd *cobra.Command, args []string) {
+	validate()
+
 	client := &http.Client{}
 
 	// Request the HTML Page
@@ -146,29 +149,57 @@ func main() {
 
 	var appFs = afero.NewOsFs()
 
-	// Write CSV File
-	csvFile, err := appFs.OpenFile("test.csv", os.O_RDWR|os.O_CREATE, os.ModePerm)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer csvFile.Close()
+	if format == "csv" {
+		// Write CSV File
+		csvFile, err := appFs.OpenFile("test.csv", os.O_RDWR|os.O_CREATE, os.ModePerm)
+		if err != nil {
+			log.Fatal(err)
+		}
+		defer csvFile.Close()
 
-	csvPrinter := NewPrinter(cl, csvFile)
-	err = csvPrinter.CSV()
-	if err != nil {
-		log.Fatal(err)
+		csvPrinter := NewPrinter(cl, csvFile)
+		err = csvPrinter.CSV()
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 
-	// Write JSON File
-	jsonFile, err := appFs.OpenFile("test.json", os.O_RDWR|os.O_CREATE, os.ModePerm)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer jsonFile.Close()
+	if format == "json" {
+		// Write JSON File
+		jsonFile, err := appFs.OpenFile("test.json", os.O_RDWR|os.O_CREATE, os.ModePerm)
+		if err != nil {
+			log.Fatal(err)
+		}
+		defer jsonFile.Close()
 
-	jsonPrinter := NewPrinter(cl, jsonFile)
-	err = jsonPrinter.JSON()
-	if err != nil {
-		log.Fatal(err)
+		jsonPrinter := NewPrinter(cl, jsonFile)
+		err = jsonPrinter.JSON()
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
+}
+
+var (
+	rootCmd = &cobra.Command{
+		Use:   "go-circle-list-extract",
+		Short: "go-circle-list-extract extracts a circle list of Comitia in JSON or CSV format.",
+		Run:   rootRun,
+	}
+
+	format string
+)
+
+func validate() {
+	if format != "json" && format != "csv" {
+		log.Fatal("invalid format")
+	}
+}
+
+func init() {
+	rootCmd.PersistentFlags().StringVarP(&format, "format", "f", "csv", "output format")
+}
+
+func main() {
+	cobra.CheckErr(rootCmd.Execute())
 }
