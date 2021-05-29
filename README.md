@@ -15,5 +15,11 @@ go install github.com/hk220/go-circle-list-extract
 ## Usage
 
 ```bash
-go-circle-list-extract -f [format:json, csv]
+go-circle-list-extract -f [format:json, csv] -o [output filename] [eventname]
 ```
+
+## Support Event
+
+See config.yaml
+
+- Comitia 134: event name is `comitia134`

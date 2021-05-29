@@ -1,11 +1,9 @@
-package main
+package parser
 
 import (
-	"reflect"
 	"strings"
-	"testing"
 
-	"github.com/PuerkitoBio/goquery"
+	"github.com/hk220/go-circle-list-extract/circle"
 )
 
 var (
@@ -26,24 +24,9 @@ var (
 </main>
 	`)
 
-	parserExpected = []Circle{
-		{"A01a", "COMITIA", "http://www.comitia.co.jp/"},
-		{"あ01a", "comitia", ""},
-		{"展01", "コミティア", "http://www.comitia.co.jp/html/about.html"},
+	parserExpected = []circle.Circle{
+		{Space: "A01a", Name: "COMITIA", URL: "http://www.comitia.co.jp/"},
+		{Space: "あ01a", Name: "comitia", URL: ""},
+		{Space: "展01", Name: "コミティア", URL: "http://www.comitia.co.jp/html/about.html"},
 	}
 )
-
-func TestParser(t *testing.T) {
-	doc, err := goquery.NewDocumentFromReader(parserReader)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	parser := NewParser(doc)
-	parser.Parse()
-	actual := parser.CircleList.circles
-
-	if !reflect.DeepEqual(parserExpected, actual) {
-		t.Errorf("Not match circles: %+v", actual)
-	}
-}
