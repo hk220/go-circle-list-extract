@@ -33,6 +33,8 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: 'go-circle-list-extract*'
+          files: |
+            go-circle-list-extract*
+            config.yaml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
