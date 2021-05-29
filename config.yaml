@@ -3,4 +3,4 @@ output: circlelist.json
 event:
   comitia134:
     circle_list_url: https://www.comitia.co.jp/history/134list_sp.html
-    parser: ParseComitia134
+    parser: Comitia134Parser

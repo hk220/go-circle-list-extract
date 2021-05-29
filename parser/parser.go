@@ -19,7 +19,7 @@ func (p Parser) Parse(doc *goquery.Document) (*circle.CircleList, error) {
 }
 
 var parser map[string]Parser = map[string]Parser{
-	"comitia134": Comitia134Parser,
+	"Comitia134Parser": Comitia134Parser,
 }
 
 func GetParser(s string) Parser {

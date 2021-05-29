@@ -59,7 +59,7 @@ var (
 			}
 
 			// Parse HTML document
-			prsr := parser.GetParser(args[0])
+			prsr := parser.GetParser(event.Parser)
 			cl, err := prsr.Parse(doc)
 			if err != nil {
 				log.Fatal(err)
