@@ -11,15 +11,13 @@ import (
 )
 
 func TestPrint(t *testing.T) {
-	cl := &circle.CircleList{
-		Circles: []circle.Circle{
-			{Space: "A01a", Name: "foo", URL: "example.com"},
-			{Space: "A02a", Name: "bar", URL: ""},
-		},
+	cl := &circle.Circles{
+		{Space: "A01a", Name: "foo", URL: "example.com"},
+		{Space: "A02a", Name: "bar", URL: ""},
 	}
 
-	var p Printer = func(w io.Writer, cl *circle.CircleList) error {
-		for _, c := range cl.Circles {
+	var p Printer = func(w io.Writer, cl *circle.Circles) error {
+		for _, c := range *cl {
 			fmt.Fprintln(w, c.Name)
 		}
 		return nil

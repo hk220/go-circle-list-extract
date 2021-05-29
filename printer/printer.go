@@ -6,9 +6,9 @@ import (
 	"github.com/hk220/go-circle-list-extract/circle"
 )
 
-type Printer func(w io.Writer, cl *circle.CircleList) error
+type Printer func(w io.Writer, cl *circle.Circles) error
 
-func (p Printer) Print(w io.Writer, cl *circle.CircleList) error {
+func (p Printer) Print(w io.Writer, cl *circle.Circles) error {
 	if err := p(w, cl); err != nil {
 		return err
 	}

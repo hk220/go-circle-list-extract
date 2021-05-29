@@ -24,7 +24,7 @@ var (
 </main>
 	`)
 
-	parserExpected = []circle.Circle{
+	parserExpected = circle.Circles{
 		{Space: "A01a", Name: "COMITIA", URL: "http://www.comitia.co.jp/"},
 		{Space: "あ01a", Name: "comitia", URL: ""},
 		{Space: "展01", Name: "コミティア", URL: "http://www.comitia.co.jp/html/about.html"},

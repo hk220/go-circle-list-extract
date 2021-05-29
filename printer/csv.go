@@ -7,8 +7,8 @@ import (
 	"github.com/hk220/go-circle-list-extract/circle"
 )
 
-func CSV(w io.Writer, cl *circle.CircleList) error {
-	err := gocsv.Marshal(cl.Circles, w)
+func CSV(w io.Writer, cl *circle.Circles) error {
+	err := gocsv.Marshal(*cl, w)
 	if err != nil {
 		return err
 	}

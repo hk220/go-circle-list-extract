@@ -5,8 +5,8 @@ import (
 	"github.com/hk220/go-circle-list-extract/circle"
 )
 
-func Comitia134Parser(doc *goquery.Document) (*circle.CircleList, error) {
-	var cl circle.CircleList
+func Comitia134Parser(doc *goquery.Document) (*circle.Circles, error) {
+	var cl circle.Circles
 
 	// Find items
 	doc.Find("table[border=\"0\"][cellpadding=\"0\"][cellspacing=\"0\"][style=\"width:100%;\"]").Find("tr").Each(func(index int, selection *goquery.Selection) {

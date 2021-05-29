@@ -6,16 +6,12 @@ import (
 )
 
 func TestAdd(t *testing.T) {
-	expect := &CircleList{
-		Circles: []Circle{
-			{Space: "A01a", Name: "hoge", URL: "example.com"},
-			{Space: "A02a", Name: "hoge", URL: ""},
-		},
+	expect := &Circles{
+		{Space: "A01a", Name: "hoge", URL: "example.com"},
+		{Space: "A02a", Name: "hoge", URL: ""},
 	}
-	actual := &CircleList{
-		Circles: []Circle{
-			{Space: "A01a", Name: "hoge", URL: "example.com"},
-		},
+	actual := &Circles{
+		{Space: "A01a", Name: "hoge", URL: "example.com"},
 	}
 	actual.Add(&Circle{Space: "A02a", Name: "hoge", URL: ""})
 
@@ -29,11 +25,9 @@ func TestString(t *testing.T) {
 		{"A01a", "hoge", "example.com"},
 		{"A02a", "hoge", ""},
 	}
-	cl := &CircleList{
-		Circles: []Circle{
-			{Space: "A01a", Name: "hoge", URL: "example.com"},
-			{Space: "A02a", Name: "hoge", URL: ""},
-		},
+	cl := &Circles{
+		{Space: "A01a", Name: "hoge", URL: "example.com"},
+		{Space: "A02a", Name: "hoge", URL: ""},
 	}
 	actual := cl.String()
 	if !reflect.DeepEqual(expect, actual) {
