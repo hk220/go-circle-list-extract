@@ -23,3 +23,4 @@ go-circle-list-extract -f [format:json, csv] -o [output filename] [eventname]
 See config.yaml
 
 - Comitia 134: event name is `comitia134`
+- Comitia 136: event name is `comitia136`
