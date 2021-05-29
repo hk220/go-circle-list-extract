@@ -23,3 +23,8 @@ var printer map[string]Printer = map[string]Printer{
 func GetPrinter(s string) Printer {
 	return printer[s]
 }
+
+func HasPrinter(s string) bool {
+	_, ok := printer[s]
+	return ok
+}
