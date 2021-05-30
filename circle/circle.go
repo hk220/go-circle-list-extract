@@ -6,17 +6,15 @@ type Circle struct {
 	URL   string `json:"url" csv:"url"`
 }
 
-type CircleList struct {
-	Circles []Circle
+type Circles []Circle
+
+func (cl *Circles) Add(c *Circle) {
+	*cl = append(*cl, *c)
 }
 
-func (cl *CircleList) Add(c *Circle) {
-	cl.Circles = append(cl.Circles, *c)
-}
-
-func (cl *CircleList) String() [][]string {
+func (cl *Circles) String() [][]string {
 	var result [][]string
-	for _, c := range cl.Circles {
+	for _, c := range *cl {
 		result = append(result, []string{c.Space, c.Name, c.URL})
 	}
 	return result

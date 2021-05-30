@@ -18,7 +18,7 @@ func TestComitia134Parser(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if !reflect.DeepEqual(parserExpected, actual.Circles) {
+	if !reflect.DeepEqual(parserExpected, *actual) {
 		t.Errorf("Not match circles, expect: %+v, actual: %+v", parserExpected, actual)
 	}
 }

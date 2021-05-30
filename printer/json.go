@@ -7,8 +7,8 @@ import (
 	"github.com/hk220/go-circle-list-extract/circle"
 )
 
-func JSON(w io.Writer, cl *circle.CircleList) error {
-	s, err := json.MarshalIndent(cl.Circles, "", "\t")
+func JSON(w io.Writer, cl *circle.Circles) error {
+	s, err := json.MarshalIndent(*cl, "", "\t")
 	if err != nil {
 		return err
 	}

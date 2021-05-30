@@ -8,9 +8,9 @@ import (
 	"golang.org/x/text/unicode/norm"
 )
 
-type Parser func(doc *goquery.Document) (*circle.CircleList, error)
+type Parser func(doc *goquery.Document) (*circle.Circles, error)
 
-func (p Parser) Parse(doc *goquery.Document) (*circle.CircleList, error) {
+func (p Parser) Parse(doc *goquery.Document) (*circle.Circles, error) {
 	cl, err := p(doc)
 	if err != nil {
 		return nil, err

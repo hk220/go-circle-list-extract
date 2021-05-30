@@ -9,11 +9,9 @@ import (
 )
 
 func TestCSV(t *testing.T) {
-	cl := &circle.CircleList{
-		Circles: []circle.Circle{
-			{Space: "A01a", Name: "foo", URL: "example.com"},
-			{Space: "A02a", Name: "bar", URL: ""},
-		},
+	cl := &circle.Circles{
+		{Space: "A01a", Name: "foo", URL: "example.com"},
+		{Space: "A02a", Name: "bar", URL: ""},
 	}
 
 	var p Printer = CSV
