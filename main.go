@@ -23,11 +23,9 @@ var (
 		Args:  cobra.ExactArgs(1),
 		Run: func(cmd *cobra.Command, args []string) {
 			// Validate flags
-			if viper.GetString("format") != "json" && viper.GetString("format") != "csv" {
+			if !printer.HasPrinter(viper.GetString("format")) {
 				log.Fatal("invalid format")
 			}
-
-			client := &http.Client{}
 
 			// Parse events
 			var events map[string]event.Event
@@ -42,6 +40,7 @@ var (
 			}
 
 			// Request the HTML Page
+			client := &http.Client{}
 			resp, err := client.Get(event.CircleListURL)
 			if err != nil {
 				log.Fatal(err)
