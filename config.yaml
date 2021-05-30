@@ -1,6 +1,27 @@
 format: json
 output: circlelist.json
 event:
+  comitia125:
+    circle_list_url: https://www.comitia.co.jp/history/125list_sp.html
+    parser: Comitia134Parser
+  comitia126:
+    circle_list_url: https://www.comitia.co.jp/history/126list_sp.html
+    parser: Comitia134Parser
+  comitia127:
+    circle_list_url: https://www.comitia.co.jp/history/127list_sp.html
+    parser: Comitia134Parser
+  comitia128:
+    circle_list_url: https://www.comitia.co.jp/history/128list_sp.html
+    parser: Comitia134Parser
+  comitia129:
+    circle_list_url: https://www.comitia.co.jp/history/129list_sp.html
+    parser: Comitia134Parser
+  comitia130:
+    circle_list_url: https://www.comitia.co.jp/history/130list_sp.html
+    parser: Comitia134Parser
+  comitia131:
+    circle_list_url: https://www.comitia.co.jp/history/131list_sp.html
+    parser: Comitia134Parser
   comitia134:
     circle_list_url: https://www.comitia.co.jp/history/134list_sp.html
     parser: Comitia134Parser
