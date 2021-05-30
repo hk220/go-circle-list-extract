@@ -18,7 +18,7 @@ var (
 	cfgFile string
 
 	rootCmd = &cobra.Command{
-		Use:   "go-circle-list-extract",
+		Use:   "go-circle-list-extract [event name]",
 		Short: "go-circle-list-extract extracts a circle list of Comitia in JSON or CSV format.",
 		Args:  cobra.ExactArgs(1),
 		Run: func(cmd *cobra.Command, args []string) {
@@ -86,7 +86,7 @@ func init() {
 	cobra.OnInitialize(initConfig)
 
 	rootCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "config.yaml", "config file (default is config.yaml)")
-	rootCmd.PersistentFlags().StringP("format", "f", "csv", "output format")
+	rootCmd.PersistentFlags().StringP("format", "f", "csv", "output format (support: json, csv)")
 	rootCmd.PersistentFlags().StringP("output", "o", "circles.csv", "output file name")
 	viper.BindPFlag("format", rootCmd.PersistentFlags().Lookup("format"))
 	viper.BindPFlag("output", rootCmd.PersistentFlags().Lookup("output"))
