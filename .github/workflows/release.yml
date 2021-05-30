@@ -14,6 +14,10 @@ jobs:
       - uses: actions/setup-go@v2
         with:
           go-version: '1.16.4'
+      - name: Test
+        run: make test
+      - name: go mod verify
+        run: make verify
       - name: Build for linux
         run: go build -o ./go-circle-list-extract-linux-amd64 .
         env:
@@ -29,7 +33,6 @@ jobs:
         env:
           GOOS: darwin
           GOARCH: amd64
-      - run: ls -alt
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
