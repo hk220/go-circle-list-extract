@@ -28,4 +28,6 @@ event:
   comitia136:
     circle_list_url: https://www.comitia.co.jp/history/136list_sp.html
     parser: Comitia134Parser
-
+  comitia137:
+    circle_list_url: https://www.comitia.co.jp/history/137list_sp.html
+    parser: Comitia134Parser
