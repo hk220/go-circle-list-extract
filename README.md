@@ -32,5 +32,6 @@ See config.yaml
 - Comitia 134: event name is `comitia134`
 - Comitia 136: event name is `comitia136`
 - Comitia 137: event name is `comitia137`
+- Comitia 137: event name is `comitia138`
 
 To see the old events, look at [SupportEvent.md](SupportEvent.md)
